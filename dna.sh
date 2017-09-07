@@ -82,9 +82,12 @@ while true; do
         if [[ ${spaces_before_level} != 3 ]]; then
             echo -en "\e[3${color}m${BLOCK}\e[m"
         fi
-        for ((i=0;i<$spaces_before_inline_level;i++)); do
-            echo -n " "
-        done
+
+        if [[ $c != $((amount_of_strands - 1)) ]]; then
+            for ((i=0;i<$spaces_before_inline_level;i++)); do
+                echo -n " "
+            done
+        fi
     done
 
     echo ""
