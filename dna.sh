@@ -29,6 +29,7 @@ Want to contribute to the project? Feel free to fork my project.
 https://github.com/clyde80/dna_bash"
 
 readonly BLOCK="█"
+readonly MAX_SPACES_BEFORE_LEVEL=3
 
 # Initial values
 spaces_before_level=0
@@ -61,13 +62,13 @@ while [[ $# -gt 0 ]]; do
 done
 
 while true; do
+
     # Put spaces before the level
-    for ((i=0;i<=$spaces_before_level;i++)); do
+    for ((i=0;i<=${spaces_before_level};i++)); do
         echo -n " "
     done
 
-    sleep $delay 
-
+    sleep $delay
 
     for ((c=0;c<${amount_of_strands};c++)); do
         if $rainbow; then
@@ -75,16 +76,17 @@ while true; do
         fi
         # Print the level
         echo -en "\e[3${color}m${BLOCK}\e[m"
+
         for ((i=0;i<${amount_of_rungs};i++)); do
             echo -en "\e[3${color}m-\e[m"
         done
 
-        if [[ ${spaces_before_level} != 3 ]]; then
+        if [[ ${spaces_before_level} != ${MAX_SPACES_BEFORE_LEVEL} ]]; then
             echo -en "\e[3${color}m${BLOCK}\e[m"
         fi
 
         if [[ $c != $((amount_of_strands - 1)) ]]; then
-            for ((i=0;i<$spaces_before_inline_level;i++)); do
+            for ((i=0;i<${spaces_before_inline_level};i++)); do
                 echo -n " "
             done
         fi
@@ -96,7 +98,7 @@ while true; do
     if [[ ${spaces_before_level} == 0 ]]; then
         longer=false
         shorter=true
-    elif [[ ${spaces_before_level} == 3 ]]; then
+    elif [[ ${spaces_before_level} == ${MAX_SPACES_BEFORE_LEVEL} ]]; then
         longer=true
         shorter=false
     fi
