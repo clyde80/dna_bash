@@ -20,7 +20,7 @@ Usage: $(basename $0) -a [amount of strands] -d [delay]
 Author: clyde80
 Website: https://github.com/clyde80/dna_bash
 Created on: August 30, 2017
-Updated on: August 31, 2017
+Updated on: November 3, 2017
 
 To file a bug report or request a feature, create an issue on Github:
 https://github.com/clyde80/dna_bash/issues
@@ -61,14 +61,26 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+cleanup() {
+    tput cnorm
+    stty echo
+    clear
+    exit 0
+}
+
+trap cleanup HUP TERM
+trap cleanup SIGINT
+
+# Get rid of the cursor
+tput civis
+stty -echo
+
 while true; do
 
     # Put spaces before the level
     for ((i=0;i<=${spaces_before_level};i++)); do
         echo -n " "
     done
-
-    sleep $delay
 
     for ((c=0;c<${amount_of_strands};c++)); do
         if $rainbow; then
@@ -93,6 +105,7 @@ while true; do
     done
 
     echo ""
+    sleep ${delay}
 
     # Update the initial values
     if [[ ${spaces_before_level} == 0 ]]; then
@@ -121,3 +134,5 @@ while true; do
         spaces_before_inline_level=$((spaces_before_inline_level+2))
     fi
 done
+
+
