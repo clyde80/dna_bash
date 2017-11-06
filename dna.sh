@@ -4,23 +4,23 @@
 #
 # Author: clyde80
 # Created on: August 30, 2017
-# Updated on: August 31, 2017
+# Updated on: November 05, 2017
 
 readonly USAGE="
-Usage: $(basename $0) -a [amount of strands] -d [delay]
+Usage: $(basename $0) -a [amount of strands] -d [delay] -c [color]
 
     OPTIONS
 
-    -a      --amount        Amount of strands to show
+    -a      --amount        Amount of strands
     -c      --color         Color to use (0-7)
-    -r      --random        Use random colors for everything
-    -d      --delay         Update delay
+    -r      --random        Use random colors
+    -d      --delay         Delay between each line printing
     -h      --help          Display this help message
 
 Author: clyde80
 Website: https://github.com/clyde80/dna_bash
 Created on: August 30, 2017
-Updated on: November 3, 2017
+Updated on: November 05, 2017
 
 To file a bug report or request a feature, create an issue on Github:
 https://github.com/clyde80/dna_bash/issues
