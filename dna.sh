@@ -4,7 +4,7 @@
 #
 # Author: clyde80
 # Created on: August 30, 2017
-# Updated on: November 05, 2017
+# Updated on: November 07, 2017
 
 readonly USAGE="
 Usage: $(basename $0) -a [amount of strands] -d [delay] -c [color]
@@ -20,7 +20,7 @@ Usage: $(basename $0) -a [amount of strands] -d [delay] -c [color]
 Author: clyde80
 Website: https://github.com/clyde80/dna_bash
 Created on: August 30, 2017
-Updated on: November 05, 2017
+Updated on: November 07, 2017
 
 To file a bug report or request a feature, create an issue on Github:
 https://github.com/clyde80/dna_bash/issues
@@ -51,6 +51,7 @@ while [[ $# -gt 0 ]]; do
                 color=$1
             else
                 echo "Invalid color ($1). Must be 0-7."
+                exit 1
             fi
             shift
             ;;
